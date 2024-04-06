@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using System.Reflection;
+using TL.Contracts;
 using TL.Contracts.Models;
 using TL.Contracts.Repositories;
 using TL.Contracts.Services;
@@ -14,10 +15,14 @@ namespace TL.Services
         {
             _bookRepository = bookRepository ?? throw new ArgumentNullException(nameof(bookRepository));
         }
-
-
         public ServiceResult<int> AddBook(BookModel user)
         {
+            var book = _bookRepository.GetById(user.Id);
+            if (book != null)
+            {
+                return ServiceResult<int>.BuildError(ErrorCodes.ItemAlreadyExists);
+            }
+
             var userDB = Mapper.Map<Book>(user);
 
             _bookRepository.Add(userDB);

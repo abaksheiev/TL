@@ -52,7 +52,7 @@ namespace TL.WebInit.Controllers
 
             if (!result.Success)
             {
-                return StatusCode(StatusCodes.Status400BadRequest);
+                return BadRequest(result.ErrorMessage);
             }
 
             return Ok(result.Data);
