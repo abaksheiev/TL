@@ -24,6 +24,7 @@ namespace TL.UnitTests
         }
 
         [Fact]
+        [Trait("Books", "BookService")]
         public void WhenGetBookDoesNotExist_ThenReturnNotExistError()
         {
             bookRepository
@@ -39,6 +40,7 @@ namespace TL.UnitTests
         }
 
         [Fact]
+        [Trait("Books", "BookService")]
         public void WhenGetBookDoesExists_ThenReturnItem()
         {
             var mockItem = new Book

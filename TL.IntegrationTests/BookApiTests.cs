@@ -23,6 +23,7 @@ namespace TL.IntegrationTests
         }
 
         [Fact]
+        [Trait("Books", "CRUD")]
         public async Task WhenBookDoesNotExist_ShouldBeReturnNotFound()
         {
             // Act
@@ -33,6 +34,7 @@ namespace TL.IntegrationTests
         }
 
         [Fact]
+        [Trait("Books", "CRUD")]
         public async Task WhenBookAdded_ShouldBeReturnedById()
         {
             //Create Book
@@ -62,6 +64,7 @@ namespace TL.IntegrationTests
         }
 
         [Theory]
+        [Trait("Books", "CRUD")]
         [MemberData(nameof(BookFeatures.GetIncorrectBookModelData), MemberType = typeof(BookFeatures))]
 
         public async Task WhenAnyFieldIsEmpty_ShouldReturnBadRequest(BookModel item)
@@ -72,6 +75,7 @@ namespace TL.IntegrationTests
         }
 
         [Theory]
+        [Trait("Books", "CRUD")]
         [InlineData("A", HttpStatusCode.BadRequest)]
         [InlineData("A B", HttpStatusCode.BadRequest)]
         [InlineData("AAAA BBBB", HttpStatusCode.BadRequest)]
@@ -91,6 +95,7 @@ namespace TL.IntegrationTests
 
 
         [Fact]
+        [Trait("Books", "CRUD")]
         public async Task WhenGetAllBooks_ShouldBeReturnedAllBooks()
         {
             const int bookAmount = 100;
