@@ -10,6 +10,8 @@ namespace TL.Repositories.Configurations
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            // It is needed only when app works with real database, in another case 
+            // there is conflich between InMemory and SqlRerver options.
             //optionsBuilder.UseSqlServer(@"<CONNECTION STRING>");
         }
 
