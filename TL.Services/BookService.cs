@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using System.Reflection;
 using TL.Contracts;
 using TL.Contracts.Models;
 using TL.Contracts.Repositories;
@@ -15,27 +14,27 @@ namespace TL.Services
         {
             _bookRepository = bookRepository ?? throw new ArgumentNullException(nameof(bookRepository));
         }
-        public ServiceResult<int> AddBook(BookModel user)
+        public ServiceResult<int> AddBook(BookModel item)
         {
-            var book = _bookRepository.GetById(user.Id);
+            var book = _bookRepository.GetById(item.Id);
             if (book != null)
             {
                 return ServiceResult<int>.BuildError(ErrorCodes.ItemAlreadyExists);
             }
 
-            var userDB = Mapper.Map<Book>(user);
+            var itemDb = Mapper.Map<Book>(item);
 
-            _bookRepository.Add(userDB);
+            _bookRepository.Add(itemDb);
             _bookRepository.SaveChanges();
 
-            return ServiceResult<int>.BuildSuccess(userDB.Id);
+            return ServiceResult<int>.BuildSuccess(itemDb.Id);
 
         }
 
         public ServiceResult<int> DeleteBook(int itemId)
         {
-            var itemDB = _bookRepository.GetById(itemId);
-            if (itemDB == null)
+            var itemDb = _bookRepository.GetById(itemId);
+            if (itemDb == null)
             {
                return ServiceResult<int>.BuildError($"book with id = '{itemId}' does not exist");
             }
@@ -48,8 +47,13 @@ namespace TL.Services
 
         public ServiceResult<BookModel> GetBook(int itemId)
         {
-            var resultDB = _bookRepository.GetById(itemId);
-            var bookModel = Mapper.Map<BookModel>(resultDB);
+            var itemDB = _bookRepository.GetById(itemId);
+            if (itemDB == null)
+            {
+                return ServiceResult<BookModel>.BuildError(ErrorCodes.ItemDoesNotExists);
+            }
+
+            var bookModel = Mapper.Map<BookModel>(itemDB);
 
             return ServiceResult<BookModel>
                 .BuildSuccess(bookModel);
