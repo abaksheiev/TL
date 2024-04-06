@@ -1,0 +1,6 @@
+@Trainline.WebInit_HostAddress = http://localhost:5083
+
+GET {{Trainline.WebInit_HostAddress}}/swagger/v1/swagger.json/
+Accept: application/json
+
+###
