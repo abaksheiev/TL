@@ -1,12 +1,10 @@
-using Microsoft.AspNetCore.Mvc.Testing;
-using System.Net;
 using FluentAssertions;
-using Bogus;
-using TL.IntegrationTests.Features;
+using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
+using System.Net;
 using System.Text;
 using TL.Contracts.Models;
-using Microsoft.AspNetCore.Http;
+using TL.IntegrationTests.Features;
 
 namespace TL.IntegrationTests
 {

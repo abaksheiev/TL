@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TL.Contracts.Models;
+﻿using TL.Contracts.Models;
 
 namespace TL.WebCore.Validators
 {
@@ -13,7 +8,7 @@ namespace TL.WebCore.Validators
 
         public bool Validate(BookModel entity, out List<string> errors)
         {
-            errors = new List<string>();
+            errors = [];
 
             if (string.IsNullOrWhiteSpace(entity.Title))
             {

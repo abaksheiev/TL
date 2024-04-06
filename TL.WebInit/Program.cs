@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore;
-
-namespace TL.WebInit
+﻿namespace TL.WebInit
 {
     public class Program
     {

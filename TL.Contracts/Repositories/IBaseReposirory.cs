@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TL.Contracts.Repositories
+﻿namespace TL.Contracts.Repositories
 {
     public interface IBaseRepository<TEntity> where TEntity : class
     {

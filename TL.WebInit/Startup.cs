@@ -1,10 +1,6 @@
 using AutoMapper;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using System.Configuration;
-using System.Reflection;
 using TL.Contracts.Models;
 using TL.Contracts.Repositories;
 using TL.Contracts.Services;

@@ -1,5 +1,4 @@
-﻿using System;
-namespace TL.Contracts.Models
+﻿namespace TL.Contracts.Models
 {
     public abstract class BaseModel
     {

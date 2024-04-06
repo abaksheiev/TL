@@ -11,19 +11,16 @@ namespace TL.WebInit.Controllers
     [Route("/api/books/")]
     public class BookController : ControllerBase
     {
-        private const string ActionName = "Item successfully added";
-
         private readonly ILogger<BookController> _logger;
         private readonly IBookService _bookService;
         private readonly IValidator<BookModel> _bookValidator;
 
         public BookController(ILogger<BookController> logger, IBookService bookService, IValidator<BookModel> bookValidator)
         {
-            _logger = logger;
-            _bookService = bookService ;
-            _bookValidator = bookValidator;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _bookService = bookService ?? throw new ArgumentNullException(nameof(bookService));
+            _bookValidator = bookValidator ?? throw new ArgumentNullException(nameof(bookValidator));
         }
-
 
         [HttpGet]
         [Route("{itemId}")]
