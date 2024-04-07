@@ -3,6 +3,7 @@ using TL.Contracts;
 using TL.Contracts.Models;
 using TL.Contracts.Repositories;
 using TL.Contracts.Services;
+using TL.Repositories;
 using TL.Repositories.Models;
 
 namespace TL.Services
@@ -36,7 +37,7 @@ namespace TL.Services
             var itemDb = _bookRepository.GetById(itemId);
             if (itemDb == null)
             {
-               return ServiceResult<int>.BuildError($"book with id = '{itemId}' does not exist");
+               return ServiceResult<int>.BuildError($"Item with id = '{itemId}' does not exist");
             }
 
             _bookRepository.Remove(itemId);
@@ -70,8 +71,16 @@ namespace TL.Services
 
         public ServiceResult<BookModel> UpdateBook(BookModel item)
         {
+            var itemDB = _bookRepository.GetById(item.Id);
+            if (itemDB == null)
+            {
+                return ServiceResult<BookModel>
+                    .BuildError(ErrorCodes.ItemDoesNotExists);
+            }
+
             var itemDb = Mapper.Map<Book>(item);
             _bookRepository.Update(itemDb);
+            _bookRepository.SaveChanges();
 
             var bookModel = Mapper.Map<BookModel>(itemDb);
 

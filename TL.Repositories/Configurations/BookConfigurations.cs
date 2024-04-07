@@ -6,7 +6,6 @@ namespace TL.Repositories.Configurations
 {
     internal class BookConfigurations : IEntityTypeConfiguration<Book>
     {
-
         public void Configure(EntityTypeBuilder<Book> builder)
         {
             builder.ToTable("books");

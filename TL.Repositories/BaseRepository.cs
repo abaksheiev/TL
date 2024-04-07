@@ -7,7 +7,6 @@ namespace TL.Repositories
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         protected readonly CatalogContext _context;
-
  
         public BaseRepository(CatalogContext context)
         {
