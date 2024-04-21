@@ -15,11 +15,9 @@
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
-                    // Register HttpClient for use in integration tests
                     services.AddHttpClient<Startup>(client =>
                     {
                         client.BaseAddress = new Uri("http://localhost:5000"); // Your API base URL
-                        // Configure other HttpClient settings as needed
                     });
                 });
     }

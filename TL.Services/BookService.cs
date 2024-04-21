@@ -3,7 +3,6 @@ using TL.Contracts;
 using TL.Contracts.Models;
 using TL.Contracts.Repositories;
 using TL.Contracts.Services;
-using TL.Repositories;
 using TL.Repositories.Models;
 
 namespace TL.Services

@@ -5,10 +5,11 @@ using TL.Contracts.Models;
 using TL.Contracts.Services;
 using TL.WebCore.Validators;
 
-namespace TL.WebInit.Controllers
+namespace TL.WebCore.Controllers.v1
 {
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    [Route("/api/books/")]
     public class BookController : ControllerBase
     {
         private readonly ILogger<BookController> _logger;
@@ -85,7 +86,7 @@ namespace TL.WebInit.Controllers
             {
                 return BadRequest(new { result.ErrorMessage });
             }
-          
+
             return Ok(new { message = $"Item {itemId} was successfully deleted" });
         }
 
